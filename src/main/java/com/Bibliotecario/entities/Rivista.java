@@ -1,16 +1,16 @@
-package com.Bibliotecario;
+package com.Bibliotecario.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Entity
-public class Rivista extends CatalogoArticolo{
+@Table(name = "rivista")
+public class Rivista extends CatalogoArticolo {
     public enum Periodicita {
         SETTIMANALE, MENSILE, SEMESTRALE
     }
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "periodicita", nullable = false)
     private Periodicita periodicita;
 
     public Rivista() {}

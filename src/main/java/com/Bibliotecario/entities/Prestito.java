@@ -1,22 +1,30 @@
-package com.Bibliotecario;
+package com.Bibliotecario.entities;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "prestito")
 public class Prestito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
     @ManyToOne
     private Utente utente;
 
     @ManyToOne
+    @JoinColumn(name = "articolo_id", nullable = false)
     private CatalogoArticolo articolo;
 
+    @Column(name = "data_inizio_prestito", nullable = false)
     private Date dataInizioPrestito;
+
+    @Column(name = "data_restituzione_prevista", nullable = false)
     private Date dataRestituzionePrevista;
+
+    @Column(name = "data_restituzione_effettiva")
     private Date dataRestituzioneEffettiva;
 
     public Prestito() {}

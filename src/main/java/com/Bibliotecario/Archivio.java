@@ -4,7 +4,7 @@ package com.Bibliotecario;
  * Hello world!
  *
  */
-public class Main 
+public class Archivio
 {
     public static void main( String[] args ) {
 

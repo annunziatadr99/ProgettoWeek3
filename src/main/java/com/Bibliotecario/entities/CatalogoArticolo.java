@@ -1,17 +1,22 @@
-package com.Bibliotecario;
+package com.Bibliotecario.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "catalogo_articolo")
 public abstract class CatalogoArticolo {
     @Id
+    @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;
+
+    @Column(name = "titolo", nullable = false)
     private String titolo;
+
+    @Column(name = "anno_di_pubblicazione", nullable = false)
     private int annoDiPubblicazione;
+
+    @Column(name = "numero_di_pagine", nullable = false)
     private int numeroDiPagine;
 
     public CatalogoArticolo(){}

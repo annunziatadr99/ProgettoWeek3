@@ -1,10 +1,17 @@
-package com.Bibliotecario;
+package com.Bibliotecario.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "libro")
 public class Libro extends CatalogoArticolo {
+
+    @Column(name = "autore", nullable = false)
     private String autore;
+
+    @Column(name = "genere", nullable = false)
     private String genere;
 
     public Libro() {}

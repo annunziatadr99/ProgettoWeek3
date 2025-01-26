@@ -1,18 +1,25 @@
-package com.Bibliotecario;
+package com.Bibliotecario.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "utente")
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
+
+    @Column(name = "nome", nullable = false)
     private String nome;
+
+    @Column(name = "cognome", nullable = false)
     private String cognome;
+
+    @Column(name = "data_di_nascita", nullable = false)
     private String dataDiNascita;
+
+    @Column(name = "numero_di_tessera", nullable = false, unique = true)
     private String numeroDiTessera;
 
     public Utente() {}

@@ -2,11 +2,15 @@ package com.Bibliotecario;
 
 import com.Bibliotecario.entities.*;
 import com.github.javafaker.Faker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Archivio {
+
+    private static final Logger logger = LoggerFactory.getLogger(Biblioteca.class);
 
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
@@ -71,38 +75,43 @@ public class Archivio {
         // Ricerca per ISBN
         if (!libri.isEmpty()) {
             CatalogoArticolo foundByIsbn = biblioteca.ricercaPerIsbn(libri.get(1).getIsbn());
-            System.out.println("Found by ISBN: " + foundByIsbn);
+            logger.info("Trovato ISBN: {}",foundByIsbn);
+
         }
 
 
         // Ricerca per anno di pubblicazione
         List<CatalogoArticolo> foundByYear = biblioteca.ricercaPerAnno(2025);
-        System.out.println("Found by year: " + foundByYear);
+        logger.info("Ricerca per anno : {}",foundByYear);
 
 
 
         // Ricerca per Autore
         List<Libro> foundByAuthor = biblioteca.ricercaPerAutore(libri.get(0).getAutore());
-        System.out.println("Found by author: " + foundByAuthor);
+        logger.info("Ricerca per Autore : {}",foundByAuthor);
+
 
 
 
         // Ricerca per Titolo
         List<CatalogoArticolo> foundByTitle = biblioteca.ricercaPerTitolo("title");
-        System.out.println("Found by title: " + foundByTitle);
+        logger.info("Ricerca per Titolo : {}",foundByYear);
+
 
 
 
         // Ricerca per Prestito in base al numero di tessera dell'Utente
         if (!utenti.isEmpty()) {
             List<Prestito> loansByCardNumber = biblioteca.ricercaPrestitiUtente(utenti.get(0).getNumeroDiTessera());
-            System.out.println("Loans by card number: " + loansByCardNumber);
+            logger.info("Prestiti per numero di Tessera dell'Utente: {}",loansByCardNumber);
+
 
         }
 
 
         // Ricerca prestiti scaduti e non ancora Restituiti
         List<Prestito> expiredLoans = biblioteca.ricercaPrestitiScaduti();
-        System.out.println("Expired loans: " + expiredLoans);
+        logger.info("Lista Prestiti scaduti: {}",expiredLoans);
+
     }
 }
